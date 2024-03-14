@@ -27,8 +27,8 @@ export function Header(props: HeaderProps): JSX.Element {
   const { sections } = props;
   return (
     <HeaderContainer>
-      <StyledAvatar />
-      <h1>Header</h1>
+      <StyledAvatar src="https://placehold.co/400"/>
+      <h1>Placeholder</h1>
       <DrawerMobileNavigation sections={sections} />
     </HeaderContainer>
   );

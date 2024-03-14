@@ -6,6 +6,7 @@ const HomeImageSectionContainer = styled.div`
   video {
     width: 100%;
     height: auto;
+    max-height: 90vh;
   }
 `;
 
