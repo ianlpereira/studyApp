@@ -35,8 +35,6 @@ interface PageLayoutProps {
 export function PageLayout(props: PageLayoutProps): JSX.Element {
   const { sections } = props;
 
-  console.log();
-
   return (
     <PageLayoutContainer>
       <Header sections={sections.map((section) => section.subtitle ?? "")} />
