@@ -7,8 +7,10 @@ import useWindowDimensions from "../hooks/useWindowDimensions";
 import { useEffect, useState } from "react";
 
 const HeaderContainer = styled.header`
+  --header-height: 10vh;
+
   background-color: #c7c7c7;
-  height: 10vh;
+  height: var(--header-height);
   width: 100%;
   display: flex;
   align-items: center;
@@ -16,6 +18,8 @@ const HeaderContainer = styled.header`
   font-size: calc(5px + 1vmin);
   color: white;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+  position: fixed;
+  margin-bottom: var(--header-height);
 `;
 
 const StyledAvatar = emotionStyled(Avatar)`
@@ -48,12 +52,16 @@ export function Header(props: HeaderProps): JSX.Element {
     }
   }, [width]);
 
+  function handleLogoNameClick() {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
   return (
     <HeaderContainer>
       {isMobile ? (
         <StyledAvatar src="https://placehold.co/400" size="lg" />
       ) : (
-        <StyledH1>Placeholder</StyledH1>
+        <StyledH1 onClick={handleLogoNameClick}>Placeholder</StyledH1>
       )}
 
       {isMobile ? (
