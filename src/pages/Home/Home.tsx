@@ -2,7 +2,6 @@ import styled from "styled-components";
 import { PageLayout } from "../../components/PageLayout";
 import { Button, TextField } from "@mui/material";
 import video from "../../assets/video.mp4";
-import { FastAverageColor } from "fast-average-color";
 
 const HomeImageSectionContainer = styled.div`
   video {
@@ -14,21 +13,6 @@ const HomeImageSectionContainer = styled.div`
   }
 `;
 function HomeImageSection(): JSX.Element {
-  const container = document.querySelector(".video") as HTMLElement;
-  const fac = new FastAverageColor();
-  if (container) {
-    fac
-      .getColorAsync(container.querySelector("video"))
-      .then((color) => {
-        container.style.backgroundColor = color.rgba;
-        container.style.color = color.isDark ? "#fff" : "#000";
-      })
-      .catch((e) => {
-        console.log(e);
-      });
-  }
-
-
   return (
     <HomeImageSectionContainer>
       <video src={video} preload="auto" autoPlay muted loop />
