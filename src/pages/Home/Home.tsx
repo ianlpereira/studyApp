@@ -1,19 +1,37 @@
 import styled from "styled-components";
 import { PageLayout } from "../../components/PageLayout";
 import { Button, TextField } from "@mui/material";
+import video from "../../assets/video.mp4";
+import { FastAverageColor } from "fast-average-color";
 
 const HomeImageSectionContainer = styled.div`
   video {
     width: 100%;
     height: auto;
-    max-height: 90vh;
+    max-height: 85vh;
+    border-radius: 0 0 1rem 1rem;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
   }
 `;
-
 function HomeImageSection(): JSX.Element {
+  const container = document.querySelector(".video") as HTMLElement;
+  const fac = new FastAverageColor();
+  if (container) {
+    fac
+      .getColorAsync(container.querySelector("video"))
+      .then((color) => {
+        container.style.backgroundColor = color.rgba;
+        container.style.color = color.isDark ? "#fff" : "#000";
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  }
+
+
   return (
     <HomeImageSectionContainer>
-      <video src="https://placehold.co/1920x1080.mp4" />
+      <video src={video} preload="auto" autoPlay muted loop />
     </HomeImageSectionContainer>
   );
 }

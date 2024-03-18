@@ -40,7 +40,10 @@ export function PageLayout(props: PageLayoutProps): JSX.Element {
       <Header sections={sections.map((section) => section.subtitle ?? "")} />
       <SectionsContainer>
         {sections.map((section, index) => (
-          <IndividualSectionContainer key={`section${index}`}>
+          <IndividualSectionContainer
+            key={`section${index}`}
+            id={`${section.subtitle}Id`}
+          >
             {section.subtitle && <h3>{section.subtitle}</h3>}
             {section.children}
             {index !== sections.length - 1 && <Divider />}

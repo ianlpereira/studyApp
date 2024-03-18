@@ -15,9 +15,20 @@ export default function DrawerMobileNavigation({
 }) {
   const [open, setOpen] = React.useState(false);
 
+  function handleNavigationClick(event: React.MouseEvent<HTMLAnchorElement>) {
+    const target = event.target as HTMLAnchorElement;
+    const section = document.getElementById(`${target.textContent}Id`);
+    section?.scrollIntoView({ behavior: "smooth" });
+    setOpen(false);
+  }
+
   return (
     <React.Fragment>
-      <IconButton variant="plain" color="neutral" onClick={() => setOpen(true)}>
+      <IconButton
+        variant="plain"
+        sx={{ color: "white" }}
+        onClick={() => setOpen(true)}
+      >
         <Menu />
       </IconButton>
       <Drawer open={open} onClose={() => setOpen(false)}>
@@ -54,7 +65,12 @@ export default function DrawerMobileNavigation({
         >
           <ListItemButton sx={{ fontWeight: "lg" }}>Home</ListItemButton>
           {sections.map((section, index) => (
-            <ListItemButton key={`section${index}`}>{section}</ListItemButton>
+            <ListItemButton
+              key={`section${index}`}
+              onClick={handleNavigationClick}
+            >
+              {section}
+            </ListItemButton>
           ))}
         </List>
       </Drawer>
