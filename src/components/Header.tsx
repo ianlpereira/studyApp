@@ -19,7 +19,6 @@ const HeaderContainer = styled.header`
   color: white;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
   position: fixed;
-  margin-bottom: var(--header-height);
   z-index: 100;
 `;
 

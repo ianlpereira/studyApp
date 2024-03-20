@@ -29,7 +29,10 @@ export function DesktopNavigation(props: DesktopNavigationProps): JSX.Element {
   function handleNavigationClick(event: React.MouseEvent<HTMLAnchorElement>) {
     const target = event.target as HTMLAnchorElement;
     const section = document.getElementById(`${target.textContent}Id`);
-    section?.scrollIntoView({ behavior: "smooth" });
+    window.scrollTo({
+      top: section!.offsetTop - window.innerHeight * 0.1,
+      behavior: "smooth",
+    });
   }
 
   return (

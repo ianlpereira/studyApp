@@ -13,7 +13,7 @@ const PageLayoutContainer = styled.div`
 
 const SectionsContainer = styled.div`
   padding: 0 1rem;
-  margin-top: 10vh;
+  margin-top: 11vh;
 `;
 
 const IndividualSectionContainer = styled.section`
