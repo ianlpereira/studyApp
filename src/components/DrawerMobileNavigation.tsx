@@ -7,6 +7,7 @@ import ListItemButton from "@mui/joy/ListItemButton";
 import Typography from "@mui/joy/Typography";
 import ModalClose from "@mui/joy/ModalClose";
 import Menu from "@mui/icons-material/Menu";
+import { scrollToFunction } from "../functions/scrollToFunction";
 
 export default function DrawerMobileNavigation({
   sections,
@@ -14,16 +15,6 @@ export default function DrawerMobileNavigation({
   sections: string[];
 }) {
   const [open, setOpen] = React.useState(false);
-
-  function handleNavigationClick(event: React.MouseEvent<HTMLAnchorElement>) {
-    const target = event.target as HTMLAnchorElement;
-    const section = document.getElementById(`${target.textContent}Id`);
-    window.scrollTo({
-      top: section!.offsetTop - window.innerHeight * 0.1,
-      behavior: "smooth",
-    });
-    setOpen(false);
-  }
 
   return (
     <React.Fragment>
@@ -70,7 +61,7 @@ export default function DrawerMobileNavigation({
           {sections.map((section, index) => (
             <ListItemButton
               key={`section${index}`}
-              onClick={handleNavigationClick}
+              onClick={(e) => (scrollToFunction(e), setOpen(false))}
             >
               {section}
             </ListItemButton>

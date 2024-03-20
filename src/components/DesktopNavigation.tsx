@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { scrollToFunction } from "../functions/scrollToFunction";
 
 const DesktopNavigationContainer = styled.nav`
   display: flex;
@@ -26,19 +27,10 @@ interface DesktopNavigationProps {
 export function DesktopNavigation(props: DesktopNavigationProps): JSX.Element {
   const { sections } = props;
 
-  function handleNavigationClick(event: React.MouseEvent<HTMLAnchorElement>) {
-    const target = event.target as HTMLAnchorElement;
-    const section = document.getElementById(`${target.textContent}Id`);
-    window.scrollTo({
-      top: section!.offsetTop - window.innerHeight * 0.1,
-      behavior: "smooth",
-    });
-  }
-
   return (
     <DesktopNavigationContainer>
       {sections.map((section) => (
-        <DesktopNavigationItem key={section} onClick={handleNavigationClick}>
+        <DesktopNavigationItem key={section} onClick={scrollToFunction}>
           {section}
         </DesktopNavigationItem>
       ))}
