@@ -1,5 +1,4 @@
 import { ImageList, ImageListItem } from "@mui/material";
-import { PageLayout } from "../../components/PageLayout";
 
 const itemData = [
   {
@@ -71,14 +70,10 @@ function srcset(image: string, size: number, rows = 1, cols = 1) {
   };
 }
 
-function PortfolioImageSection(): JSX.Element {
+export function PortfolioImageSection(): JSX.Element {
   return (
     <div>
-      <ImageList
-        variant="quilted"
-        cols={4}
-        sx={{ width: "90vw", marginTop: "15vh" }}
-      >
+      <ImageList variant="quilted" cols={4} sx={{ width: "90vw" }}>
         {itemData.map((item) => (
           <ImageListItem
             key={item.img}
@@ -94,13 +89,5 @@ function PortfolioImageSection(): JSX.Element {
         ))}
       </ImageList>
     </div>
-  );
-}
-
-export function Portfolio(): JSX.Element {
-  return (
-    <PageLayout
-      sections={[{ children: <PortfolioImageSection />, subtitle: "" }]}
-    />
   );
 }
